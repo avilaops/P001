@@ -23,7 +23,8 @@ export interface StoredBlob {
   sizeBytes: number;
 }
 
-const r2 = config.storageDriver === "r2" ? new S3Client({
+// A fila de entrada pode usar R2 mesmo quando as caixas ficam no servidor.
+const r2 = config.storageDriver === "r2" || config.api.inboundToken.length > 0 ? new S3Client({
   endpoint: config.r2.endpoint,
   region: "auto",
   forcePathStyle: true,
@@ -59,7 +60,7 @@ function resolvePath(storageKey: string): string {
 
 export async function storeRaw(id: string, raw: Buffer, when: Date = new Date()): Promise<StoredBlob> {
   const storageKey = keyFor(id, when);
-  if (r2) {
+  if (config.storageDriver === "r2" && r2) {
     await r2.send(new PutObjectCommand({ Bucket: config.r2.bucket, Key: validObjectKey(storageKey), Body: gzipSync(raw, { level: 6 }), ContentType: "application/gzip" }));
     return { storageKey, sizeBytes: raw.byteLength };
   }
@@ -70,7 +71,7 @@ export async function storeRaw(id: string, raw: Buffer, when: Date = new Date())
 }
 
 export async function readRaw(storageKey: string): Promise<Buffer> {
-  if (r2) {
+  if (config.storageDriver === "r2" && r2) {
     try {
       const object = await r2.send(new GetObjectCommand({ Bucket: config.r2.bucket, Key: validObjectKey(storageKey) }));
       if (!object.Body) throw new Error("Objeto de mensagem retornou sem corpo.");
@@ -86,7 +87,7 @@ export async function readRaw(storageKey: string): Promise<Buffer> {
 }
 
 export async function deleteRaw(storageKey: string): Promise<void> {
-  if (r2) {
+  if (config.storageDriver === "r2" && r2) {
     await r2.send(new DeleteObjectCommand({ Bucket: config.r2.bucket, Key: validObjectKey(storageKey) }));
     return;
   }
@@ -99,7 +100,7 @@ export async function deleteRaw(storageKey: string): Promise<void> {
 }
 
 export async function ensureStorageDir(): Promise<void> {
-  if (r2) {
+  if (config.storageDriver === "r2" && r2) {
     await r2.send(new HeadBucketCommand({ Bucket: config.r2.bucket }));
     return;
   }
@@ -111,7 +112,7 @@ export async function readPendingInbound(storageKey: string) {
   if (!/^incoming\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\.eml$/.test(storageKey)) {
     throw new Error("Chave de entrada invalida.");
   }
-  if (!r2) throw new Error("Recepcao Cloudflare requer armazenamento R2.");
+  if (!r2) throw new Error("Recepcao Cloudflare requer credenciais R2.");
   const object = await r2.send(new GetObjectCommand({ Bucket: config.r2.bucket, Key: storageKey }));
   if (!object.Body || !object.ContentLength || object.ContentLength > config.limits.maxMessageBytes) {
     throw new Error("Mensagem pendente sem corpo ou maior que o limite.");
