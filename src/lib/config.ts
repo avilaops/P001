@@ -236,7 +236,7 @@ export function assertConfig(scope: "mta" | "api"): void {
   if (!["filesystem", "r2"].includes(config.storageDriver)) {
     throw new Error("MAIL_STORAGE_DRIVER deve ser filesystem ou r2.");
   }
-  if (config.storageDriver === "r2") {
+  if (config.storageDriver === "r2" || config.api.inboundToken.length > 0) {
     for (const name of ["MAIL_R2_ENDPOINT", "MAIL_R2_BUCKET", "MAIL_R2_ACCESS_KEY_ID", "MAIL_R2_SECRET_ACCESS_KEY"]) required(name);
     const endpoint = new URL(config.r2.endpoint);
     if (endpoint.protocol !== "https:" && !(process.env.NODE_ENV === "test" && endpoint.hostname === "127.0.0.1")) {
