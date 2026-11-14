@@ -47,5 +47,7 @@ test("recebe a fila R2 e mantém as mensagens no filesystem", async () => {
   await storage.deleteRaw(saved.storageKey);
   await assert.rejects(readFile(join(localDir, saved.storageKey)), { code: "ENOENT" });
   assert.equal(calls.length, 1);
-  assert.match(calls[0], new RegExp(`^GET /recovery/${pendingKey}`));
+  const [call] = calls;
+  assert.ok(call);
+  assert.match(call, new RegExp(`^GET /recovery/${pendingKey}`));
 });
