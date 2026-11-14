@@ -17,7 +17,7 @@ export function NavegacaoProduto({ agendaHabilitada = true }: { agendaHabilitada
       <Link href="/caixa" className="flex items-center gap-2 rounded-md text-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-realce)]">
         {/* eslint-disable-next-line @next/next/no-img-element -- icone local pequeno e estatico */}
         <img src="/favicon-96x96.png" alt="" width={24} height={24} className="h-6 w-6 rounded-md" />
-        <span className="hidden sm:inline">Ávila Mail</span>
+        <span className="hidden sm:inline">Mail</span>
       </Link>
 
       <nav aria-label="Alternar produto" className="flex rounded-lg bg-[var(--color-fundo-suave)] p-1">

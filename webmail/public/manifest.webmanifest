@@ -1,7 +1,7 @@
 {
-  "name": "Ávila Ops — E-mail",
-  "short_name": "Ávila Mail",
-  "description": "Caixa de e-mail profissional da Ávila Ops: ler, escrever e organizar no navegador ou no celular.",
+  "name": "Mail • Avila Ops",
+  "short_name": "Mail",
+  "description": "Caixa de e-mail profissional da Avila Ops: ler, escrever e organizar no navegador ou no celular.",
   "id": "/caixa",
   "start_url": "/caixa",
   "scope": "/",

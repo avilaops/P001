@@ -15,9 +15,9 @@ export const dynamic = "force-dynamic";
  * A exceção vale só aqui; `/entrar`, `/caixa` e o resto seguem fora do índice.
  */
 export const metadata: Metadata = {
-  title: "E-mail com o domínio da sua empresa | Ávila Mail",
+  title: "E-mail com o domínio da sua empresa • Mail",
   description:
-    "R$ 10 por caixa, por mês, no servidor próprio da Ávila Ops. Webmail, IMAP, contatos, agenda e os e-mails antigos trazidos do provedor atual.",
+    "R$ 10 por caixa, por mês, no servidor próprio da Avila Ops. Webmail, IMAP, contatos, agenda e os e-mails antigos trazidos do provedor atual.",
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
 };

@@ -4,20 +4,20 @@ import { scriptInicial } from "@/lib/tema-noturno";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mail.avilaops.com";
-const description = "Webmail corporativo da Ávila Ops.";
+const description = "Webmail corporativo da Avila Ops.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "E-mail Ávila Ops",
+  title: "Mail • Avila Ops",
   description,
   // Caixa de e-mail nao tem por que aparecer em buscador. O card do
   // WhatsApp e outra historia: e por la que o acesso e enviado.
   robots: { index: false, follow: false },
   openGraph: {
-    title: "E-mail Ávila Ops",
+    title: "Mail • Avila Ops",
     description,
     url: siteUrl,
-    siteName: "Ávila Ops",
+    siteName: "Avila Ops",
     locale: "pt_BR",
     type: "website",
     images: [
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "E-mail Ávila Ops",
+        alt: "Mail • Avila Ops",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "E-mail Ávila Ops",
+    title: "Mail • Avila Ops",
     description,
     images: ["/og-default.png"],
   },
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
    * navegador nao oferece "instalar" e a notificacao aparece sem icone.
    */
   manifest: "/manifest.webmanifest",
-  applicationName: "Ávila Mail",
-  appleWebApp: { capable: true, title: "Ávila Mail", statusBarStyle: "black-translucent" },
+  applicationName: "Mail",
+  appleWebApp: { capable: true, title: "Mail", statusBarStyle: "black-translucent" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

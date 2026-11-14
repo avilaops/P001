@@ -38,7 +38,7 @@ const CENAS: {
     rotulo: "A caixa",
     titulo: "A caixa, no navegador",
     texto:
-      "Webmail em português, no servidor da Ávila Ops. Não é a única porta: Outlook, Apple Mail e o celular entram pelo mesmo endereço.",
+      "Webmail em português, no servidor da Avila Ops. Não é a única porta: Outlook, Apple Mail e o celular entram pelo mesmo endereço.",
     itens: [
       {
         titulo: "Busca, pastas e regras",
@@ -170,7 +170,7 @@ const PERGUNTAS = [
   {
     pergunta: "Como ficam a segurança e os dados?",
     resposta:
-      "TLS na conexão, DKIM na saída, SPF, DKIM e DMARC conferidos todo dia, segunda etapa por TOTP e HTML da mensagem limpo antes de abrir. A lixeira fica 30 dias. O dado é da sua empresa; a exclusão de conta segue a política da Ávila Ops.",
+      "TLS na conexão, DKIM na saída, SPF, DKIM e DMARC conferidos todo dia, segunda etapa por TOTP e HTML da mensagem limpo antes de abrir. A lixeira fica 30 dias. O dado é da sua empresa; a exclusão de conta segue a política da Avila Ops.",
   },
   {
     pergunta: "E se eu não cuidar de DNS?",
@@ -258,7 +258,7 @@ function CenaCaixa() {
 function CenaSeguranca() {
   const itens = [
     ["MX", "mail.avilaops.com", "no ar"],
-    ["SPF", "include da Ávila Ops", "no ar"],
+    ["SPF", "include da Avila Ops", "no ar"],
     ["DKIM", "assinatura do domínio", "no ar"],
     ["DMARC", "política publicada", "no ar"],
   ];
@@ -292,7 +292,7 @@ function CenaCelular() {
       <div className="rounded-2xl bg-[var(--color-fundo-suave)] p-3">
         <p className="text-center text-[11px] text-[var(--color-texto-fraco)]">09:41</p>
         <div className="mt-6 rounded-2xl border border-[var(--color-borda)] bg-[var(--color-superficie)] p-3 shadow-sm">
-          <p className="text-[11px] font-semibold text-[var(--color-realce)]">Ávila Mail</p>
+          <p className="text-[11px] font-semibold text-[var(--color-realce)]">Mail</p>
           <p className="mt-1 text-sm font-semibold">Marina Costa</p>
           <p className="text-xs text-[var(--color-texto-fraco)]">Proposta de outubro — pode confirmar o horário?</p>
         </div>
@@ -353,12 +353,12 @@ export function PaginaInicial() {
             {/* eslint-disable-next-line @next/next/no-img-element -- ícone estático, sem otimização */}
             <img
               src="/web-app-manifest-192x192.png"
-              alt="Ávila Mail"
+              alt="Mail"
               width={40}
               height={40}
               className="h-9 w-9 rounded-xl shadow-sm sm:h-10 sm:w-10"
             />
-            <span className="text-sm font-semibold tracking-tight">Ávila Mail</span>
+            <span className="text-sm font-semibold tracking-tight">Mail</span>
           </Link>
 
           <nav className="flex items-center gap-1 sm:gap-3">
@@ -388,7 +388,7 @@ export function PaginaInicial() {
               E-mail com o domínio da sua empresa
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-pretty text-[var(--color-texto-fraco)] sm:text-lg">
-              Servidor próprio da Ávila Ops. Webmail, IMAP e os e-mails antigos trazidos do provedor
+              Servidor próprio da Avila Ops. Webmail, IMAP e os e-mails antigos trazidos do provedor
               atual. R$ {PRECO_POR_CAIXA} por caixa, por mês, sem cobrança de instalação.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -548,7 +548,7 @@ export function PaginaInicial() {
 
         <section className="border-t border-[var(--color-borda)]">
           <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-24">
-            <p className="text-sm font-semibold tracking-tight text-[var(--color-realce)]">Ávila Mail</p>
+            <p className="text-sm font-semibold tracking-tight text-[var(--color-realce)]">Mail</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
               O endereço da empresa, no servidor da empresa que te atende.
             </h2>
@@ -575,7 +575,7 @@ export function PaginaInicial() {
 
       <footer className="rodape-seguro border-t border-[var(--color-borda)] bg-[var(--color-fundo-suave)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="text-[var(--color-texto-fraco)]">Ávila Ops Tecnologia · e-mail próprio, não revenda</p>
+          <p className="text-[var(--color-texto-fraco)]">Avila Ops Tecnologia · e-mail próprio, não revenda</p>
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a href="/entrar" className="transition hover:text-[var(--color-realce)]">
               Entrar
