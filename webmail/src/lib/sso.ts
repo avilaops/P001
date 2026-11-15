@@ -47,9 +47,14 @@ export function urlLoginSso(destino = "/caixa"): string {
  */
 export function urlLogoutSso(): string {
   const retorno = `${webmailBase()}/entrar?local=1`;
-  const q = new URLSearchParams({ app: "mail", returnTo: retorno, post_logout_redirect_uri: retorno });
+  const q = new URLSearchParams({ app: "mail", returnTo: retorno });
   const clientId = process.env.AUTH_CLIENT_ID?.trim();
-  if (clientId) q.set("client_id", clientId);
+  // O Auth seleciona OIDC pela presença de qualquer parâmetro desse protocolo.
+  // Sem cliente configurado, preservar o logout legado por app/returnTo.
+  if (clientId) {
+    q.set("client_id", clientId);
+    q.set("post_logout_redirect_uri", retorno);
+  }
   return `${authBase()}/api/auth/logout?${q}`;
 }
 
