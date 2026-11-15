@@ -37,6 +37,8 @@ jobs:
         working-directory: webmail
       - run: npm run test:calendar
         working-directory: webmail
+      - run: npm run test:logout-sso
+        working-directory: webmail
       - run: npm run lint
         working-directory: webmail
       - run: npm run typecheck
