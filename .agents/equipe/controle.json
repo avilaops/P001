@@ -9,7 +9,7 @@
       "id": "MAIL-LOGOUT-SSO-20261115-01",
       "title": "Corrigir logout legado enviado como OIDC sem cliente",
       "responsible": "nicolas",
-      "status": "em-revisao",
+      "status": "concluido",
       "acceptance": [
         "Logout sem AUTH_CLIENT_ID usa app e returnTo sem selecionar OIDC",
         "Logout com cliente preserva client_id e post_logout_redirect_uri",
@@ -19,7 +19,9 @@
         "Producao: avila-webmail sem AUTH_CLIENT_ID; urlLogoutSso enviava post_logout_redirect_uri sem client_id",
         "Auth destinoDoLogout seleciona OIDC pela presenca de post_logout_redirect_uri e recusa cliente ausente",
         "Teste logout-sso.mjs RED no codigo anterior e GREEN apos correcao; cobre cliente ausente, vazio, espacos e configurado",
-        "Auth publico em requisicoes sem sessao: pedido antigo HTTP400 com erro da captura; pedido corrigido HTTP303 para entrar?local=1 e cookie SSO expirado"
+        "Auth publico em requisicoes sem sessao: pedido antigo HTTP400 com erro da captura; pedido corrigido HTTP303 para entrar?local=1 e cookie SSO expirado",
+        "Revisao independente aprovada sem achados; PR27 integrada em d0ef7c8125f024537177b4812196cac3bb3824e4",
+        "CI e deploy43685779375 concluidos com sucesso; em 15/11/2026 06:40 UTC formulario publico sem parametro OIDC, Auth HTTP303 com cookie expirado e tela de entrada HTTP200"
       ]
     },
     {
